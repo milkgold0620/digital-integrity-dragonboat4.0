@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI時代的真偽辨識－簽到表</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:900px;margin:auto;padding:20px;line-height:1.6}
+h1,h2{text-align:center}
+.card{border:1px solid #ccc;border-radius:10px;padding:20px;margin:15px 0}
+input,select,button{width:100%;padding:10px;margin:8px 0}
+table{width:100%;border-collapse:collapse}
+th,td{border:1px solid #ccc;padding:8px;text-align:left}
+</style>
+</head>
+<body>
+<h1>數位發展部數位產業署</h1>
+<h2>「AI 時代的真偽辨識」實務會分享</h2>
+
+<div class="card">
+<p><b>時間：</b>115年6月9日星期二10時</p>
+<p><b>地點：</b>20A01會議室</p>
+
+<label>組室</label>
+<select id="dept">
+<option>政策組</option>
+<option>通傳組</option>
+<option>平臺組</option>
+<option>跨域組</option>
+<option>數服組</option>
+<option>人事室</option>
+<option>主計室</option>
+<option>秘書室</option>
+<option>政風室</option>
+</select>
+
+<label>姓名</label>
+<input id="name" placeholder="請輸入姓名">
+
+<button onclick="signIn()">簽到</button>
+</div>
+
+<div class="card">
+<h3>簽到名單</h3>
+<table id="tbl">
+<thead><tr><th>時間</th><th>組室</th><th>姓名</th></tr></thead>
+<tbody></tbody>
+</table>
+</div>
+
+<script>
+function signIn(){
+ const dept=document.getElementById('dept').value;
+ const name=document.getElementById('name').value.trim();
+ if(!name){alert('請輸入姓名');return;}
+ const row=document.createElement('tr');
+ row.innerHTML=`<td>${new Date().toLocaleString()}</td><td>${dept}</td><td>${name}</td>`;
+ document.querySelector('#tbl tbody').appendChild(row);
+ document.getElementById('name').value='';
+ alert('簽到完成！');
+}
+</script>
+</body>
+</html>
